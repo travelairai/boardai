@@ -1,636 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b1020" />
-  <title>BoardAI.ai — The AI-Native Creative Brand</title>
-  <meta name="description" content="BoardAI.ai is a premium AI-native visual intelligence brand and domain asset. Strategic inquiries only." />
-  <!-- Open Graph -->
-  <meta property="og:title" content="BoardAI.ai — The AI-Native Creative Brand" />
-  <meta property="og:description" content="A premium AI-native visual intelligence brand and domain asset. Strategic inquiries only." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.boardai.ai/" />
-  <style>
-    :root {
-      --bg0: #070914;
-      --bg1: #0b1020;
-      --card: #0e1630cc;
-      --stroke: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --soft: rgba(255,255,255,.10);
-      --primary: #22d3ee; /* blue/cyan dominant for creative AI feel */
-      --secondary: #7c3aed; /* violet accent */
-      --highlight: #34d399; /* mint touch */
-      --shadow: 0 18px 55px rgba(0,0,0,.55);
-      --radius: 18px;
-      --radius2: 28px;
-      --max: 1140px;
-      --blur: 18px;
-    }
-    * { box-sizing:border-box; }
-    html, body { height:100%; margin:0; padding:0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 650px at 20% 10%, rgba(34,211,238,.35), transparent 55%),
-        radial-gradient(1100px 650px at 80% 30%, rgba(124,58,237,.28), transparent 55%),
-        radial-gradient(900px 550px at 40% 85%, rgba(52,211,153,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #060816);
-      overflow-x: hidden;
-    }
-    a { color:inherit; text-decoration:none; }
-    .wrap { max-width:var(--max); margin:0 auto; padding:0 20px; }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(var(--blur));
-      background: linear-gradient(to bottom, rgba(7,9,20,.72), rgba(7,9,20,.35));
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 74px;
-    }
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      letter-spacing: .2px;
-    }
-    .logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      box-shadow: 0 12px 35px rgba(34,211,238,.25);
-      position: relative;
-      overflow: hidden;
-    }
-    .logo:after {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: conic-gradient(from 180deg, rgba(255,255,255,.25), transparent 55%, rgba(255,255,255,.18));
-      animation: spin 8s linear infinite;
-      opacity: .65;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .brand b { font-weight: 800; }
-    .brand small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
-    .navlinks { display: flex; gap: 18px; align-items: center; }
-    .navlinks a {
-      color: var(--muted);
-      font-size: 14px;
-      padding: 10px 10px;
-      border-radius: 12px;
-      transition: .18s ease;
-    }
-    .navlinks a:hover { color: var(--text); background: rgba(255,255,255,.06); }
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(34,211,238,.20);
-      background: linear-gradient(135deg, rgba(34,211,238,.22), rgba(34,211,238,.14));
-      box-shadow: 0 12px 35px rgba(0,0,0,.35);
-      transition: .18s ease;
-      font-size: 14px;
-      color: var(--text);
-    }
-    .cta:hover { transform: translateY(-1px); border-color: rgba(34,211,238,.35); }
-    .cta .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #ffffff, var(--primary));
-      box-shadow: 0 0 0 5px rgba(34,211,238,.10);
-    }
-    /* Hero */
-    .hero { padding: 64px 0 26px; position: relative; }
-    .gridfx {
-      position: absolute;
-      inset: -40px -40px auto -40px;
-      height: 520px;
-      background:
-        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: radial-gradient(circle at 35% 25%, black 0%, transparent 65%);
-      opacity: .35;
-      pointer-events: none;
-    }
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1.25fr .9fr;
-      gap: 34px;
-      align-items: start;
-    }
-    .kicker {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      padding: 9px 12px;
-      border: 1px solid rgba(34,211,238,.20);
-      background: rgba(34,211,238,.04);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .pill {
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(34,211,238,.26), rgba(34,211,238,.12));
-      border: 1px solid rgba(34,211,238,.20);
-      color: rgba(255,255,255,.80);
-    }
-    h1 {
-      margin: 18px 0 12px;
-      font-size: clamp(34px, 4.2vw, 56px);
-      line-height: 1.02;
-      letter-spacing: -0.8px;
-    }
-    .grad {
-      background: linear-gradient(90deg, #ffffff, var(--primary), #ffffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .sub {
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.55;
-      max-width: 54ch;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-top: 16px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(34,211,238,.20);
-      background: rgba(34,211,238,.06);
-      color: var(--text);
-      transition: .18s ease;
-      font-weight: 650;
-      font-size: 14px;
-    }
-    .btn:hover { transform: translateY(-1px); border-color: rgba(34,211,238,.35); }
-    .btn.primary {
-      background: linear-gradient(135deg, rgba(34,211,238,.40), rgba(34,211,238,.22));
-      box-shadow: 0 18px 45px rgba(0,0,0,.40);
-    }
-    .btn .arrow { opacity: .8; }
-    .fineprint {
-      margin-top: 14px;
-      color: rgba(255,255,255,.55);
-      font-size: 12.5px;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .fineprint span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border: 1px solid rgba(34,211,238,.20);
-      border-radius: 999px;
-      background: rgba(34,211,238,.03);
-    }
-    /* Glass cards */
-    .glass {
-      border: 1px solid rgba(34,211,238,.20);
-      background: linear-gradient(180deg, rgba(34,211,238,.10), rgba(34,211,238,.05));
-      backdrop-filter: blur(var(--blur));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .panel { padding: 18px; }
-    .panel h3 { margin: 0 0 6px; font-size: 14px; letter-spacing: .2px; }
-    .panel p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
-    /* Form */
-    .formwrap { padding: 18px; }
-    form { display: grid; gap: 12px; }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    label { display: block; font-size: 12px; color: rgba(255,255,255,.68); margin-bottom: 6px; }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(34,211,238,.20);
-      background: rgba(0,0,0,.20);
-      color: var(--text);
-      outline: none;
-      transition: .18s ease;
-      font-size: 14px;
-    }
-    textarea { min-height: 120px; resize: vertical; }
-    input:focus, select:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 5px rgba(34,211,238,.10); }
-    .submit {
-      border: none;
-      cursor: pointer;
-      padding: 13px 14px;
-      border-radius: 16px;
-      font-weight: 750;
-      background: linear-gradient(135deg, rgba(34,211,238,.30), rgba(34,211,238,.36));
-      color: rgba(255,255,255,.92);
-      transition: .18s ease;
-    }
-    .submit:hover { transform: translateY(-1px); }
-    .note { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.45; }
-    /* Sections */
-    section { padding: 44px 0; }
-    .section-title {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 16px;
-    }
-    .section-title h2 { margin: 0; font-size: 22px; letter-spacing: -0.2px; }
-    .section-title p { margin: 0; color: var(--muted); font-size: 14px; max-width: 58ch; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .card {
-      padding: 16px 16px 14px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(34,211,238,.20);
-      background: rgba(34,211,238,.04);
-      transition: .18s ease;
-      position: relative;
-      overflow: hidden;
-      min-height: 140px;
-    }
-    .card:hover { transform: translateY(-2px); border-color: rgba(34,211,238,.35); }
-    .card b { display: block; margin-bottom: 6px; }
-    .card p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
-    .spark {
-      position: absolute;
-      inset: auto -40px -40px auto;
-      width: 160px;
-      height: 160px;
-      border-radius: 999px;
-      filter: blur(18px);
-      opacity: .10;
-      animation: drift 10s ease-in-out infinite;
-    }
-    .o1 { left: -120px; top: 120px; background: var(--primary); }
-    .o2 { right: -140px; top: 220px; background: var(--secondary); animation-duration: 12s; }
-    .o3 { left: 18%; bottom: -160px; background: var(--highlight); animation-duration: 14s; }
-    @keyframes drift {
-      0%,100% { transform: translate3d(0,0,0); }
-      50% { transform: translate3d(22px,-18px,0); }
-    }
-    /* Responsive */
-    @media (max-width: 980px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 14px; }
-      .cards { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BoardAI.ai — AI-Powered Board Governance</title>
+<meta name="description" content="BoardAI.ai brings intelligent decision-making, automated agendas, real-time insights, and governance compliance to boards of directors and executive teams."/>
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --accent: #00f5d4;
+    --accent-dark: #06b6d4;
+    --radius: 16px;
+    --max: 1280px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  section { padding: 120px 0; }
+  h1, h2, h3 { line-height: 1.2; }
+  .btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.25s ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0f172a;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,245,212,.3); }
+  .btn-outline {
+    border: 1px solid var(--muted);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,23,42,.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  .logo {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 180px 0 140px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 80px);
+    margin-bottom: 24px;
+    font-weight: 800;
+  }
+  .hero .highlight {
+    color: var(--accent);
+  }
+  .hero p {
+    font-size: 22px;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    color: var(--muted);
+  }
+  .hero .btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .features {
+    background: var(--surface);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+  .feature-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    transition: all 0.3s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 48px rgba(0,245,212,.12);
+  }
+  .feature-icon {
+    font-size: 48px;
+    margin-bottom: 24px;
+    color: var(--accent);
+  }
+
+  .cta {
+    text-align: center;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+  }
+  .cta h2 {
+    font-size: 48px;
+    margin-bottom: 24px;
+  }
+  .cta p {
+    font-size: 22px;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 48px;
+  }
+
+  footer {
+    padding: 80px 0 40px;
+    text-align: center;
+    color: var(--muted);
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  footer .logo {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 80px 0; }
+    .hero { padding: 120px 0 80px; }
+    h1 { font-size: 48px; }
+  }
+</style>
 </head>
 <body>
-  <div class="orbs" aria-hidden="true">
-    <div class="orb o1"></div>
-    <div class="orb o2"></div>
-    <div class="orb o3"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <div class="logo">BoardAI.ai</div>
+    <div style="display:flex;gap:32px;align-items:center;font-weight:500;">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact" class="btn btn-primary">Request Demo</a>
+    </div>
   </div>
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#top">
-          <span class="logo" aria-hidden="true"></span>
-          <span>
-            <b>BoardAI.ai</b>
-            <small>AI-native visual intelligence brand asset</small>
-          </span>
-        </a>
-        <div class="navlinks">
-          <a href="#positioning">Positioning</a>
-          <a href="#usecases">Use cases</a>
-          <a href="#faq">FAQ</a>
-          <a href="#inquire">Inquire</a>
-        </div>
-        <a class="cta" href="#inquire">
-          <span class="dot"></span>
-          Strategic Inquiry
-        </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1>
+      Board meetings,<br/>
+      <span class="highlight">redefined by AI</span>
+    </h1>
+    <p>
+      Intelligent agendas, real-time insights, automated minutes, and governance-grade decision support — all in one secure platform.
+    </p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-primary" style="font-size:20px;padding:18px 40px;">Get Early Access</a>
+      <a href="#features" class="btn btn-outline" style="font-size:20px;padding:18px 40px;">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features">
+  <div class="wrap">
+    <h2 style="text-align:center;font-size:48px;margin-bottom:64px;">Intelligent Board Management</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Smart Agendas</h3>
+        <p>AI drafts, prioritizes, and optimizes board agendas based on past meetings, strategy, and urgency.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Real-Time Insights</h3>
+        <p>Live analytics, sentiment tracking, and risk flagging during discussions — never miss a critical point.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Automated Minutes</h3>
+        <p>Accurate, compliant minutes generated instantly — searchable, secure, and board-approved in seconds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Enterprise-Grade Security</h3>
+        <p>SOC 2, end-to-end encryption, role-based access, and full audit trails — built for the boardroom.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Decision Intelligence</h3>
+        <p>AI-powered recommendations, voting simulations, and post-meeting follow-up automation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Global Collaboration</h3>
+        <p>Secure, multilingual support for distributed boards — anytime, anywhere.</p>
       </div>
     </div>
   </div>
-  <main id="top">
-    <header class="hero">
-      <div class="gridfx" aria-hidden="true"></div>
-      <div class="wrap">
-        <div class="hero-inner">
-          <div>
-            <div class="kicker">
-              <span class="pill">Premium Domain</span>
-              <span>Acquisition-ready branding for visual AI</span>
-            </div>
-            <h1>
-              Own a name that feels <span class="grad">inevitable</span> in visual AI.
-            </h1>
-            <p class="sub">
-              <b>BoardAI.ai</b> is a premium, category-aligned brand asset built for the next generation of visual intelligence —
-              from generative boards and infinite canvases to real-time creative collaboration, predictive design, and autonomous brand visualization.
-              <br><br>
-              This is not a hobby listing. It’s positioned for teams who move fast and care about creative authority.
-            </p>
-            <div class="hero-actions">
-              <a class="btn primary" href="#inquire">
-                Request acquisition details <span class="arrow">→</span>
-              </a>
-              <a class="btn" href="#positioning">
-                See positioning <span class="arrow">↘</span>
-              </a>
-            </div>
-            <div class="fineprint">
-              <span>• Strategic discussions only</span>
-              <span>• Fast transfer via escrow</span>
-              <span>• Clean, brand-safe asset</span>
-            </div>
-          </div>
-          <aside class="glass">
-            <div class="panel">
-              <h3>Inbound, qualified, simple.</h3>
-              <p>Submit a strategic inquiry. You’ll receive next-step details via the contact information provided.</p>
-            </div>
-            <div class="formwrap" id="inquire">
-              <form action="https://formspree.io/f/xnjjngql" method="POST">
-                <div class="row">
-                  <div>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" placeholder="Your name" required />
-                  </div>
-                  <div>
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" placeholder="name@company.com" required />
-                  </div>
-                </div>
-                <div class="row">
-                  <div>
-                    <label for="company">Company (optional)</label>
-                    <input id="company" name="company" type="text" placeholder="Company / fund / project" />
-                  </div>
-                  <div>
-                    <label for="intent">Inquiry type</label>
-                    <select id="intent" name="inquiry_type" required>
-                      <option value="" disabled selected>Select one…</option>
-                      <option>Domain acquisition</option>
-                      <option>Partnership / JV</option>
-                      <option>Brand / product build</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label for="message">Message</label>
-                  <textarea id="message" name="message" placeholder="Share what you're building and your timeline. If acquisition-focused, include preferred structure (outright / terms) and decision window." required></textarea>
-                </div>
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-                <button class="submit" type="submit">Submit strategic inquiry</button>
-                <div class="note">
-                  By submitting, you confirm you’re reaching out for a legitimate business purpose.
-                  You’ll receive follow-up to the email provided. (No public pricing on-page.)
-                </div>
-              </form>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </header>
-    <section id="positioning">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Positioned for premium buyers</h2>
-          <p>
-            The value here is brand authority: short, memorable, category-aligned, and built for AI-native visual intelligence.
-          </p>
-        </div>
-        <div class="cards">
-          <div class="card">
-            <div class="spark" aria-hidden="true"></div>
-            <b>Category-aligned</b>
-            <p>“Board” + “AI” is instantly understood globally, and naturally maps to infinite canvases, mood boards, and visual generation.</p>
-          </div>
-          <div class="card">
-            <div class="spark" aria-hidden="true"></div>
-            <b>AI-native extension</b>
-            <p>.ai signals innovation and positions the brand as an AI-first creative tool, not a legacy design app.</p>
-          </div>
-          <div class="card">
-            <div class="spark" aria-hidden="true"></div>
-            <b>Strategic brand moat</b>
-            <p>Names like this are difficult to replace once your product is live. Brand clarity becomes a growth advantage.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="usecases">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Built for real use cases</h2>
-          <p>BoardAI.ai can sit at the center of a platform, product line, or innovation unit — without sounding narrow or trendy.</p>
-        </div>
-        <div class="two">
-          <div class="glass">
-            <div class="panel">
-              <h3>High-fit applications</h3>
-              <p>Use the brand as a flagship product or a premium sub-brand inside an existing creative organization.</p>
-            </div>
-            <div class="panel" style="padding-top:0">
-              <ul class="list">
-                <li class="li">
-                  <span class="badge" aria-hidden="true"></span>
-                  <div>
-                    <b>Generative boards & infinite canvases</b>
-                    <span>Real-time visual ideation that adapts to prompts, mood, and brand guidelines.</span>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="badge" aria-hidden="true"></span>
-                  <div>
-                    <b>Predictive design intelligence</b>
-                    <span>AI that suggests layouts, palettes, and assets before the user asks.</span>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="badge" aria-hidden="true"></span>
-                  <div>
-                    <b>Autonomous mood-boarding & brand visualization</b>
-                    <span>Instant brand kits, product mockups, and visual storytelling from text or reference.</span>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="badge" aria-hidden="true"></span>
-                  <div>
-                    <b>Creative collaboration & prototyping</b>
-                    <span>Real-time team editing, version control, and AI-assisted iteration for studios and agencies.</span>
-                  </div>
-                </li>
-                <li class="li">
-                  <span class="badge" aria-hidden="true"></span>
-                  <div>
-                    <b>AI-powered content generation & editing</b>
-                    <span>Automated asset creation, style transfer, and iterative refinement for designers and creators.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="glass">
-            <div class="panel">
-              <h3>What you’re really buying</h3>
-              <p>Brand + positioning that reduces future friction: marketing, memorability, trust, and category clarity.</p>
-            </div>
-            <div class="panel" style="padding-top:0; padding-bottom:18px;">
-              <div class="card" style="min-height:auto; background: rgba(34,211,238,.035); border-radius: 18px;">
-                <b>Signals authority on day one</b>
-                <p>In a crowded visual AI space, the name becomes a shortcut to credibility.</p>
-              </div>
-              <div style="height:10px"></div>
-              <div class="card" style="min-height:auto; background: rgba(34,211,238,.035); border-radius: 18px;">
-                <b>Protects competitive positioning</b>
-                <p>Owning a premium category brand is defense and offense—especially as generative tools converge.</p>
-              </div>
-              <div style="height:10px"></div>
-              <div class="card" style="min-height:auto; background: rgba(34,211,238,.035); border-radius: 18px;">
-                <b>Flexible brand architecture</b>
-                <p>Works for consumer apps, enterprise tools, or platform plays without boxing you into one feature set.</p>
-              </div>
-              <div style="height:14px"></div>
-              <a class="btn primary" href="#inquire" style="width:100%; text-align:center; justify-content:center;">
-                Start a strategic conversation →
-              </a>
-              <div style="height:12px"></div>
-              <div class="note">
-                If you’re evaluating multiple naming options: the right question is not “can we build without it?” —
-                it’s “what does it cost later if we don’t own it now?”
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="faq">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>FAQ</h2>
-          <p>Clear answers for teams and investors evaluating acquisition and transfer.</p>
-        </div>
-        <div class="faq">
-          <details>
-            <summary>
-              Is BoardAI.ai for sale?
-              <span class="chev">▾</span>
-            </summary>
-            <div class="ans">
-              Yes—this is a strategic asset. Serious, qualified inquiries can request acquisition structure and next steps through the form.
-            </div>
-          </details>
-          <details>
-            <summary>
-              Do you show the price publicly?
-              <span class="chev">▾</span>
-            </summary>
-            <div class="ans">
-              No. Pricing and structure are shared privately to qualified parties. This protects the process and keeps discussions serious.
-            </div>
-          </details>
-          <details>
-            <summary>
-              What transfer method do you use?
-              <span class="chev">▾</span>
-            </summary>
-            <div class="ans">
-              Standard escrow and registrar transfer for buyer protection and clean delivery. Details are provided after initial inquiry.
-            </div>
-          </details>
-          <details>
-            <summary>
-              Is this brand suitable for enterprise use?
-              <span class="chev">▾</span>
-            </summary>
-            <div class="ans">
-              Yes. The name is globally intuitive, category-aligned, and positioned as an AI-native brand—appropriate for consumer or enterprise products.
-            </div>
-          </details>
-          <details>
-            <summary>
-              Can you include brand assets (logo / guidelines)?
-              <span class="chev">▾</span>
-            </summary>
-            <div class="ans">
-              If requested, brand asset discussions can be included as part of a structured acquisition conversation.
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="wrap">
-        <div class="glass">
-          <div class="panel" style="padding:18px 18px 8px;">
-            <h3>Last word</h3>
-            <p>
-              BoardAI.ai is designed to be the brand people remember—and the asset competitors wish they secured earlier.
-              If you’re building in visual AI, this name is a strategic advantage.
-            </p>
-          </div>
-          <div class="panel" style="padding-top:0; padding-bottom:18px;">
-            <a class="btn primary" href="#inquire" style="width:100%; text-align:center; justify-content:center;">
-              Submit strategic inquiry →
-            </a>
-            <div style="height:10px"></div>
-            <div class="note">No public email. No tire-kickers. Just real discussions.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="wrap">
-      <div class="foot">
-        <div>© <span id="year"></span> BoardAI.ai — All rights reserved.</div>
-        <div>Strategic inquiries only • Brand-safe asset • Escrow-friendly</div>
-      </div>
-    </div>
-  </footer>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", e => {
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2>The future of governance is intelligent.</h2>
+    <p>Join the select group of forward-thinking boards already on the waitlist.</p>
+    <a href="#contact" class="btn btn-primary" style="font-size:22px;padding:20px 48px;">Request Early Access</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="logo">BoardAI.ai</div>
+    <p style="margin-top:16px;font-size:14px;">
+      © <script>document.write(new Date().getFullYear())</script> BoardAI.ai — All rights reserved
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>
