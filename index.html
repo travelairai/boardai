@@ -79,10 +79,10 @@ header .wrap {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(0,245,212,.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(0,245,212,.06) 0%, transparent 50%),
-    linear-gradient(45deg, transparent 40%, rgba(0,245,212,.04) 50%, transparent 60%);
-  opacity: 0.8;
+    radial-gradient(circle at 20% 30%, rgba(0,245,212,.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(0,245,212,.08) 0%, transparent 60%),
+    linear-gradient(45deg, transparent 40%, rgba(0,245,212,.05) 50%, transparent 60%);
+  opacity: 0.7;
   pointer-events: none;
   z-index: 0;
 }
@@ -90,24 +90,13 @@ header .wrap {
   content: "";
   position: absolute;
   inset: 0;
-  background: 
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(0,245,212,.02) 10px,
-      rgba(0,245,212,.02) 12px
-    ),
-    repeating-linear-gradient(
-      135deg,
-      transparent,
-      transparent 15px,
-      rgba(0,245,212,.03) 15px,
-      rgba(0,245,212,.03) 17px
-    );
-  opacity: 0.5;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M10 50 Q 50 10, 90 50 Q 50 90, 10 50' fill='none' stroke='%2300f5d4' stroke-width='1' opacity='0.15'/%3E%3Ccircle cx='50' cy='50' r='4' fill='%2300f5d4' opacity='0.4'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.4;
   pointer-events: none;
   z-index: 0;
+  animation: flow 20s linear infinite;
 }
 .hero > * {
   position: relative;
@@ -130,6 +119,10 @@ header .wrap {
   gap:24px;
   justify-content:center;
   flex-wrap:wrap;
+}
+@keyframes flow {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
 }
 
 .features { background:var(--surface); }
@@ -271,17 +264,12 @@ footer .logo {
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p>© <span id="year"></span> BoardAi.ai. All rights reserved.</p>
-    <p><strong>BoardAi.ai</strong> is a privately owned brand and digital asset.</p>
-    <p>Strategic partnerships or acquisition discussions may be considered.</p>
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="logo">BoardAI.ai</div>
+    <p style="margin-top:16px;font-size:14px;">
+      © <script>document.write(new Date().getFullYear())</script> BoardAI.ai — All rights reserved
     </p>
   </div>
 </footer>
