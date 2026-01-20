@@ -1,268 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BoardAI.ai — AI-Powered Board Governance</title>
-  <meta name="description" content="BoardAI.ai brings intelligent decision-making, automated agendas, real-time insights, and governance compliance to boards of directors and executive teams."/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --bg: #0a0e1a;
-      --surface: #131b2e;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --accent: #00f5d4;
-      --accent-dark: #06b6d4;
-      --purple-glow: #7c3aed;
-      --radius: 20px;
-      --max: 1320px;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    a { color:inherit; text-decoration:none; }
-    .wrap { max-width:var(--max); margin:0 auto; padding:0 24px; }
-    section { padding:120px 0; }
-    h1,h2,h3 { line-height:1.15; font-weight:800; }
-    .btn {
-      padding:16px 40px;
-      border-radius:14px;
-      font-weight:700;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition:all .3s ease;
-      font-size:1.1rem;
-    }
-    .btn-primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-      color:#0f172a;
-    }
-    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,245,212,.35); }
-    .btn-outline {
-      border:2px solid var(--muted);
-      color:var(--text);
-    }
-    .btn-outline:hover { border-color:var(--accent); color:var(--accent); }
-
-    header {
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(10,14,26,.92);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    header .wrap {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:24px 0;
-    }
-    .logo {
-      font-size:2.4rem;
-      font-weight:900;
-      background:linear-gradient(90deg,var(--accent),var(--purple-glow));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    /* New Cosmic Purple Orb Hero */
-    .hero {
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-      background:
-        linear-gradient(rgba(10,14,26,0.78), rgba(19,27,46,0.92)),
-        url('https://your-hosted-cosmic-purple-orb-url.jpg') center/cover no-repeat fixed;
-      background-blend-mode: multiply;
-    }
-    .hero::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(124,58,237,0.18) 0%, transparent 60%),
-        radial-gradient(circle at 70% 60%, rgba(0,245,212,0.12) 0%, transparent 70%);
-      pointer-events:none;
-      z-index:0;
-    }
-    .hero > .wrap {
-      position:relative;
-      z-index:2;
-    }
-    .hero h1 {
-      font-size:clamp(3.5rem, 8vw, 6.5rem);
-      margin-bottom:1.5rem;
-    }
-    .hero .highlight { 
-      background:linear-gradient(90deg,var(--accent),var(--purple-glow));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .hero p {
-      font-size:1.5rem;
-      max-width:780px;
-      margin:0 auto 3rem;
-      color:var(--muted);
-    }
-    .btn-group {
-      display:flex;
-      gap:2rem;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-
-    .features { background:var(--surface); }
-    .features h2 { text-align:center; font-size:3.2rem; margin-bottom:5rem; }
-    .features-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-      gap:2.5rem;
-    }
-    .feature-card {
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius);
-      padding:3rem 2.5rem;
-      transition:all .4s ease;
-      backdrop-filter:blur(8px);
-    }
-    .feature-card:hover {
-      transform:translateY(-12px);
-      border-color:var(--accent);
-      box-shadow:0 20px 60px rgba(0,245,212,.15);
-    }
-    .feature-icon {
-      font-size:3.8rem;
-      margin-bottom:1.8rem;
-      color:var(--accent);
-    }
-
-    .cta {
-      text-align:center;
-      background:linear-gradient(to bottom, #131b2e, #0a0e1a);
-    }
-    .cta h2 { font-size:3.5rem; margin-bottom:2rem; }
-    .cta p { font-size:1.5rem; color:var(--muted); max-width:700px; margin:0 auto 3.5rem; }
-
-    footer {
-      padding:6rem 0 3rem;
-      text-align:center;
-      color:var(--muted);
-      border-top:1px solid rgba(255,255,255,.06);
-    }
-
-    @media (max-width:768px) {
-      section { padding:80px 0; }
-      .hero { min-height:90vh; padding:100px 0; }
-      .hero h1 { font-size:3.2rem; }
-      .btn { padding:14px 32px; font-size:1rem; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BoardAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{--d:#0f121a;--c:rgba(32,44,68,.85);--a:#60a5fa;--b:#94a3b8;--r:20px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:var(--d);color:#fff;line-height:1.6;}
+  .c{max-width:900px;margin:auto;padding:5rem 1rem;}
+  h1{font-size:clamp(2.5rem,11vw,6rem);font-weight:800;letter-spacing:-.05em;background:linear-gradient(90deg,#60a5fa,#a5b4fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .p{font-size:clamp(1.1rem,4.5vw,1.4rem);color:var(--b);margin:2rem 0;}
+  .f{margin-top:4rem;text-align:center;}
+  .b{display:block;width:100%;max-width:300px;margin:1.5rem auto;padding:.9rem 0;background:#60a5fa;color:#fff;font-weight:600;border-radius:999px;text-decoration:none;box-shadow:0 4px 20px rgba(96,165,250,.3);}
+  footer{margin-top:6rem;font-size:.8rem;color:var(--b);text-align:center;}
+  @media(max-width:640px){.c{padding:4rem 1rem};.b{padding:1rem 0}}
+</style>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header>
-    <div class="wrap">
-      <div class="logo">BoardAI.ai</div>
-      <div style="display:flex;gap:2.5rem;align-items:center;font-weight:600;">
-        <a href="#features">Features</a>
-        <a href="#cta">Get Access</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <h1>
-        Board Governance,<br/>
-        <span class="highlight">Reimagined by AI</span>
-      </h1>
-      <p>
-        Intelligent agendas • Real-time insights • Automated minutes • Governance-grade decisions — all powered by cutting-edge AI.
-      </p>
-      <div class="btn-group">
-        <a href="#cta" class="btn btn-primary">Request Early Access</a>
-        <a href="#features" class="btn btn-outline">Explore Features</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features" class="features">
-    <div class="wrap">
-      <h2>Intelligent Board Management</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📋</div>
-          <h3>Smart Agendas</h3>
-          <p>AI drafts, prioritizes, and optimizes agendas based on history, strategy, and urgency.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3>Real-Time Insights</h3>
-          <p>Live analytics, sentiment analysis, and risk detection during meetings.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h3>Automated Minutes</h3>
-          <p>Compliant, searchable minutes generated instantly — ready for approval.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h3>Enterprise Security</h3>
-          <p>SOC 2 compliant, end-to-end encryption, role-based access & audit trails.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🧠</div>
-          <h3>Decision Intelligence</h3>
-          <p>AI recommendations, voting simulations, and automated follow-ups.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🌐</div>
-          <h3>Global Collaboration</h3>
-          <p>Secure, multilingual support for distributed executive teams.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="cta" class="cta">
-    <div class="wrap">
-      <h2>The Future of Governance is Intelligent</h2>
-      <p>Join forward-thinking boards already shaping tomorrow's decisions.</p>
-      <form action="https://formspree.io/f/xdaakajw" method="POST" style="max-width:620px;margin:3rem auto;text-align:left;">
-        <input type="text" name="name" placeholder="Your name" required style="width:100%;padding:18px;margin-bottom:1rem;border-radius:14px;border:1px solid var(--muted);background:var(--surface);color:var(--text);font-size:1.1rem;"/>
-        <input type="email" name="email" placeholder="Your email" required style="width:100%;padding:18px;margin-bottom:1rem;border-radius:14px;border:1px solid var(--muted);background:var(--surface);color:var(--text);font-size:1.1rem;"/>
-        <textarea name="message" placeholder="Tell us about your board or needs" rows="4" style="width:100%;padding:18px;border-radius:14px;border:1px solid var(--muted);background:var(--surface);color:var(--text);font-size:1.1rem;resize:vertical;"></textarea>
-        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:1.5rem;font-size:1.3rem;padding:20px 0;">Request Early Access</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
- <footer>
-      © 2026 BoardAI.ai — All rights reserved.<br>
-      This domain and associated intellectual property are privately owned.<br>
-      Strategic partnerships or acquisition discussions may be considered.<br>
-      For informational purposes only. Not an offer to sell.
-    </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<div class="c">
+<h1>BoardAI</h1>
+<p class="p">Real-time governance for AI boards. Compliance, decisions, and audit trails in one stack.</p>
+<div class="f"><a href="https://formspree.io/f/mgooobvd" class="b">Request Briefing</a></div>
+</div>
+<footer>© 2026 | All rights reserved. Privately held asset.</footer>
 </body>
 </html>
