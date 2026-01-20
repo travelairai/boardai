@@ -1,210 +1,785 @@
-<!DOCTYPE html>
+[1:59 PM, 1/20/2026] .: <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TravelAir.ai — The Intelligence Layer for Global Travel Systems</title>
+  <meta name="description" content="TravelAir.ai is a privately held AI platform designed to function as the intelligence layer beneath modern travel ecosystems." />
+  <meta name="theme-color" content="#0b0f1a" />
+
+  <style>
+    :root{
+      --bg:#070A12;
+      --panel:#0B1020;
+      --panel2:#0C1326;
+      --text:#EAF0FF;
+      --muted:#A9B4D0;
+      --line:rgba(255,255,255,.10);
+      --accent:#F6A63A;
+      --accent2:#3B82F6;
+      --good:#22C55E;
+      --bad:#EF4444;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius:16px;
+      …
+[3:57 PM, 1/20/2026] .: <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TravelAir.ai — Enterprise Travel Intelligence Infrastructure</title>
+  <meta name="description" content="TravelAir.ai is an AI-driven decision layer for optimizing enterprise travel planning, routing, and spend. Infrastructure — not a booking platform." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TravelAir.ai — Enterprise Travel Intelligence Infrastructure" />
+  <meta property="og:description" content="An AI-driven decision layer for optimizing travel planning, routing, and spend across enterprise environments." />
+  <meta property="og:type" cont…
+[4:50 PM, 1/20/2026] .: <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
-  <meta name="format-detection" content="telephone=no"/>
-  <title>Board AI</title>
-  <meta name="description" content="Ultra-premium AI governance and decision intelligence platform for executive teams and boards."/>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BoardAI.ai — Executive Decision Intelligence</title>
+  <meta name="description" content="BoardAI.ai — AI decision intelligence for boards, executives, and strategic leadership teams." />
+  <meta name="theme-color" content="#0B0E13" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BoardAI.ai — Executive Decision Intelligence" />
+  <meta property="og:description" content="Turning complex information into clear, defensible decisions at the highest level." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.boardai.ai" />
+
+  <!-- Typography (matches TravelAir vibe) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #080c17;
-      --card: rgba(17,24,39,0.68);
-      --border: rgba(96,165,250,0.30);
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --accent: #60a5fa;
-      --glow: rgba(96,165,250,0.50);
-      --radius: 24px;
+    :root{
+      --bg:#0B0E13;
+      --bg2:#0E1320;
+      --glass: rgba(255,255,255,.045);
+      --glass2: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.10);
+      --text:#E6E8EB;
+      --muted: rgba(230,232,235,.72);
+      --muted2: rgba(230,232,235,.56);
+
+      /* TravelAir-style accent (crisp blue) */
+      --accent:#4F6BFF;
+      --accent2:#5B8CFF;
+
+      --ok:#2EE59D;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --r:18px;
+      --r2:24px;
+      --max:1120px;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: 
-        linear-gradient(rgba(8,12,23,0.65), rgba(0,0,0,0.80)),  /* Reduced opacity = vivid, non-faded background */
-        url('https://images.unsplash.com/photo-1639325676295-1e0e3a3b3b3b?w=2070&auto=format&fit=crop&q=80') center/cover no-repeat fixed;
-      background-blend-mode: multiply;
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
-      line-height: 1.65;
-      min-height: 100dvh;
-      -webkit-font-smoothing: antialiased;
+      background:
+        radial-gradient(1100px 760px at 14% 10%, rgba(79,107,255,.22), transparent 58%),
+        radial-gradient(900px 650px at 86% 18%, rgba(91,140,255,.14), transparent 60%),
+        radial-gradient(900px 650px at 50% 100%, rgba(46,229,157,.08), transparent 60%),
+        var(--bg);
+      line-height:1.45;
+      overflow-x:hidden;
     }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: clamp(60px, 10vw, 120px) 24px;
+
+    a{color:inherit; text-decoration:none}
+    .wrap{width:min(var(--max), calc(100% - 48px)); margin:0 auto;}
+
+    /* TravelAir-like grain */
+    .grain{
+      pointer-events:none;
+      position:fixed; inset:-20%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity:.06;
+      mix-blend-mode: overlay;
+      animation: drift 10s linear infinite;
     }
-    header {
-      text-align: center;
-      padding-bottom: 6rem;
+    @keyframes drift{
+      0%{transform:translate3d(0,0,0)}
+      50%{transform:translate3d(-3%,2%,0)}
+      100%{transform:translate3d(0,0,0)}
     }
-    h1 {
-      font-size: clamp(4.5rem, 11vw, 8rem);
-      font-weight: 900;
-      background: linear-gradient(90deg, #60a5fa, #a5b4fc, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -0.04em;
-      margin-bottom: 1.2rem;
+
+    /* Sticky top bar (tighter + cleaner, like TravelAir) */
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(11,14,19,.86), rgba(11,14,19,.56));
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .tagline {
-      font-size: clamp(1.4rem, 5vw, 1.8rem);
-      color: #d1d5db;
-      max-width: 960px;
-      margin: 0 auto 3rem;
-      font-weight: 300;
-      opacity: 0.92;
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
     }
-    .vision-section {
-      max-width: 900px;
-      margin: 0 auto 4rem;
-      text-align: center;
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 220px;
     }
-    .vision {
-      font-size: clamp(1.15rem, 4vw, 1.35rem);
-      color: #cbd5e1;
-      line-height: 1.7;
-      margin-bottom: 2rem;
+    .mark{
+      width:34px; height:34px; border-radius: 12px;
+      background:
+        radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.46), transparent 55%),
+        linear-gradient(135deg, rgba(79,107,255,.98), rgba(91,140,255,.58));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 30px rgba(79,107,255,.22);
     }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 32px;
-      margin-bottom: 5rem;
+    .brand .name{font-weight:650; letter-spacing:.2px;}
+    .brand .tag{display:block; font-size:12px; color:var(--muted2); margin-top:2px;}
+
+    nav.links{
+      display:flex; gap: 16px; align-items:center; justify-content:center;
+      flex:1;
     }
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(18px);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2.4rem;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 48px rgba(0,0,0,0.5);
+    nav.links a{
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: .18s ease;
     }
-    .card:hover {
-      transform: translateY(-12px);
-      border-color: rgba(96,165,250,0.55);
-      box-shadow: 0 24px 80px var(--glow);
+    nav.links a:hover{
+      color: var(--text);
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
     }
-    .card h3 {
-      font-size: clamp(1.5rem, 4vw, 1.9rem);
-      font-weight: 700;
-      color: #e0f2fe;
-      margin-bottom: 0.8rem;
+
+    .cta{
+      display:flex; gap:10px; align-items:center; justify-content:flex-end;
+      min-width: 220px;
     }
-    .form-section {
-      max-width: 600px;
-      margin: 4rem auto 0;
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 13px;
+      transition: .18s ease;
+      cursor:pointer;
+      user-select:none;
     }
-    .form-section label {
-      display: block;
-      margin: 1rem 0 0.4rem;
-      font-size: 0.95rem;
-      color: #cbd5e1;
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.05)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(79,107,255,.95), rgba(91,140,255,.72));
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 18px 50px rgba(79,107,255,.22);
     }
-    input, textarea {
-      width: 100%;
-      padding: 0.9rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: white;
-      border-radius: 8px;
-      font-size: 1rem;
+    .btn.primary:hover{filter:brightness(1.05)}
+    .dot{
+      width:8px; height:8px; border-radius: 50%;
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.10);
     }
-    textarea { min-height: 140px; resize: vertical; }
-    button {
-      display: block;
-      width: 100%;
-      margin-top: 1.5rem;
-      padding: 1.1rem;
-      background: linear-gradient(135deg, #2563eb, var(--accent));
-      color: white;
-      font-weight: 600;
-      font-size: 1.1rem;
-      border: none;
+
+    /* HERO (more TravelAir: less “dashboard”, more “brand”) */
+    .hero{
+      padding: 78px 0 52px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 28px;
+      align-items:start;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
       border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.3s;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 12px;
     }
-    button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(96,165,250,0.4); }
-    footer {
-      margin-top: 8rem;
-      padding: 4rem 1rem;
-      text-align: center;
-      font-size: 0.95rem;
-      color: #64748b;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .pulse{
+      width:10px; height:10px; border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(46,229,157,.45);
+      animation: pulse 1.8s infinite;
     }
-    @media (max-width: 768px) {
-      .container { padding: 60px 20px; }
-      h1 { font-size: clamp(3.8rem, 14vw, 5.8rem); }
-      .cta { padding: 3.5rem 2rem; margin-top: 6rem; }
-      button { padding: 1.4rem 1.5rem; font-size: 1.2rem; }
+    @keyframes pulse{
+      0%{box-shadow: 0 0 0 0 rgba(46,229,157,.35)}
+      70%{box-shadow: 0 0 0 14px rgba(46,229,157,0)}
+      100%{box-shadow: 0 0 0 0 rgba(46,229,157,0)}
     }
-    @media (max-width: 480px) {
-      button { padding: 1.5rem 1rem; font-size: 1.15rem; }
+
+    h1{
+      margin: 16px 0 12px;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.9px;
+    }
+    .sub{
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: 20px;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top: 8px;}
+    .hero-note{
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      max-width: 64ch;
+    }
+    .hero-note svg{opacity:.75; margin-top:2px; flex:0 0 auto}
+
+    /* Side “Signal” card (cleaner, less busy) */
+    .panel{
+      border-radius: var(--r2);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .panel::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 260px at 18% 0%, rgba(79,107,255,.22), transparent 58%),
+        radial-gradient(420px 240px at 90% 18%, rgba(91,140,255,.16), transparent 62%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .panel-inner{position:relative; padding: 18px;}
+    .panel-title{
+      font-size: 12px;
+      color: var(--muted2);
+      letter-spacing:.18em;
+      text-transform: uppercase;
+      margin: 4px 0 12px;
+    }
+    .panel-bullets{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin: 0;
+      padding: 0;
+      list-style:none;
+    }
+    .panel-bullets li{
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .panel-bullets strong{
+      color: rgba(255,255,255,.90);
+      font-weight: 600;
+    }
+
+    /* Sections */
+    section{padding: 56px 0;}
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    h2{margin:0; font-size: 24px; letter-spacing:-0.4px;}
+    .hint{color: var(--muted2); font-size: 13px; max-width: 60ch;}
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .card{
+      border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 18px;
+      transition: .18s ease;
+      min-height: 150px;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.14);
+    }
+    .label{
+      font-size: 12px;
+      color: var(--muted2);
+      letter-spacing:.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .icon{
+      width: 28px;
+      height: 28px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(79,107,255,.22), rgba(255,255,255,.02));
+      display:grid;
+      place-items:center;
+    }
+    .card h3{margin: 0 0 8px; font-size: 16px; letter-spacing:-0.2px;}
+    .card p{margin:0; color: var(--muted); font-size: 13px; line-height:1.5;}
+
+    /* Philosophy strip (TravelAir-style statement) */
+    .philosophy{
+      border-radius: var(--r2);
+      padding: 26px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(700px 220px at 20% 0%, rgba(79,107,255,.16), transparent 60%),
+        radial-gradient(700px 220px at 90% 0%, rgba(46,229,157,.10), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+    }
+    .quote{
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      margin:0 0 8px;
+    }
+    .quote small{
+      display:block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items:start;
+    }
+    form{
+      border-radius: var(--r2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 18px;
+    }
+    .field{display:flex; flex-direction:column; gap: 8px; margin-bottom: 12px;}
+    label{font-size: 12px; color: var(--muted2);}
+    input, textarea{
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px 12px;
+      color: var(--text);
+      outline:none;
+      font-size: 14px;
+      transition: .15s ease;
+    }
+    textarea{min-height: 110px; resize: vertical}
+    input:focus, textarea:focus{
+      border-color: rgba(91,140,255,.55);
+      box-shadow: 0 0 0 6px rgba(91,140,255,.10);
+    }
+    .form-actions{display:flex; gap: 10px; align-items:center; justify-content:flex-start; margin-top: 10px;}
+    .status{font-size: 12px; color: var(--muted2);}
+
+    .sidebox{
+      border-radius: var(--r2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 18px;
+    }
+    .sidebox h3{margin:0 0 10px; font-size: 15px;}
+    .sidebox ul{
+      margin:0;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .mini{
+      margin-top: 14px;
+      border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.5;
+    }
+
+    /* Footer */
+    footer{
+      padding: 28px 0 34px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted2);
+      font-size: 12px;
+    }
+    .footer-row{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .footlinks{display:flex; gap: 14px; align-items:center;}
+    .footlinks a{
+      color: var(--muted2);
+      border-bottom: 1px dashed rgba(255,255,255,.18);
+      padding-bottom: 2px;
+    }
+    .footlinks a:hover{color: var(--text)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr}
+      .cta{min-width:auto}
+      nav.links{display:none}
+      .grid3{grid-template-columns: 1fr}
+      .contact{grid-template-columns: 1fr}
+      .brand{min-width:auto}
     }
   </style>
 </head>
+
 <body>
+  <div class="grain"></div>
 
-  <div class="container">
-    <header>
-      <h1>Board AI</h1>
-      <p class="tagline">
-        Governance intelligence for boards that move fast and stay compliant in the AI era.
-      </p>
-    </header>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="BoardAI.ai home">
+          <div class="mark" aria-hidden="true"></div>
+          <div>
+            <div class="name">BoardAI.ai</div>
+            <span class="tag">Executive Decision Intelligence</span>
+          </div>
+        </a>
 
-    <div class="vision-section">
-      <p class="vision">
-        Board AI redefines how boards operate when AI is in the room. Real-time insights replace static reports. Automated compliance replaces manual checklists. Strategic decisions become data-confident, auditable, and accelerated — without sacrificing governance rigor. Built for executives who need clarity, speed, and control in an increasingly autonomous world.
-      </p>
-    </div>
+        <nav class="links" aria-label="Primary">
+          <a href="#overview">Overview</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#usecases">Use Cases</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-    <div class="features">
-      <div class="card">
-        <h3>Smart Agenda Engine</h3>
-        <p>AI drafts, prioritizes, and refines board agendas based on strategy, risk, past decisions, and emerging priorities.</p>
-      </div>
-
-      <div class="card">
-        <h3>Live Decision Intelligence</h3>
-        <p>Real-time sentiment analysis, risk flagging, scenario modeling, and voting simulations during live board discussions.</p>
-      </div>
-
-      <div class="card">
-        <h3>Automated Governance Layer</h3>
-        <p>Instant compliant minutes, full audit trails, regulatory checks, and post-meeting follow-up automation — ready for approval in seconds.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Partner / License</a>
+          <a class="btn primary" href="#contact"><span class="dot"></span>Contact</a>
+        </div>
       </div>
     </div>
+  </header>
 
-    <div class="form-section">
-      <h2 style="text-align:center;margin-bottom:1.5rem;">Request Confidential Briefing</h2>
-      <form action="https://formspree.io/f/xnjjngql" method="POST">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required placeholder="Your full name" />
+  <main id="top">
+    <!-- HERO -->
+    <div class="wrap">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">
+              <span class="pulse" aria-hidden="true"></span>
+              Built for boards, executives, and strategic leadership teams
+            </div>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="your@email.com" />
+            <h1>Decision intelligence, built for the highest level.</h1>
 
-        <label for="message">Message (optional)</label>
-        <textarea id="message" name="message" placeholder="Tell us about your interest, project, or inquiry..."></textarea>
+            <p class="sub">
+              BoardAI.ai turns complex information into clear, defensible judgment — designed for governance, strategy, and high-stakes decisions.
+            </p>
 
-        <button type="submit">Send Message</button>
-      </form>
+            <div class="hero-actions">
+              <a class="btn primary" href="#contact"><span class="dot"></span>Open a Conversation</a>
+              <a class="btn" href="#capabilities">Explore Capabilities</a>
+            </div>
+
+            <div class="hero-note">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" stroke="white" stroke-opacity=".35" stroke-width="1.7"/>
+                <path d="M12 7v6l4 2" stroke="white" stroke-opacity=".55" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              <span>
+                Minimal by design. BoardAI.ai is positioned as decision infrastructure — partnership, licensing, and early access inquiries welcomed.
+              </span>
+            </div>
+          </div>
+
+          <aside class="panel" aria-label="Signal snapshot">
+            <div class="panel-inner">
+              <div class="panel-title">Signal Snapshot</div>
+              <ul class="panel-bullets">
+                <li><strong>Clarity:</strong> Reduce noise. Elevate what changes the decision.</li>
+                <li><strong>Alignment:</strong> Create shared context across stakeholders.</li>
+                <li><strong>Defensibility:</strong> Capture tradeoffs, risks, and assumptions.</li>
+                <li><strong>Velocity:</strong> Faster consensus, fewer decision loops.</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
     </div>
 
-    <footer>
-      © 2026 Board AI — All rights reserved.<br>
-      This domain and associated intellectual property are privately owned.<br>
-      Strategic partnerships or acquisition discussions may be considered.<br>
-      For informational purposes only. Not an offer to sell.
-    </footer>
-  </div>
+    <!-- OVERVIEW -->
+    <div class="wrap">
+      <section id="overview">
+        <div class="section-head">
+          <div>
+            <h2>Built for Decision-Makers</h2>
+            <div class="hint">Not a dashboard. Not a feature set. BoardAI.ai is positioned as decision intelligence infrastructure.</div>
+          </div>
+        </div>
 
+        <div class="grid3">
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">✓</span>
+              Signal over noise
+            </div>
+            <h3>Decision-grade clarity</h3>
+            <p>Transform sprawling inputs into structured judgment: what matters, why it matters, and what changes the decision.</p>
+          </div>
+
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">⌁</span>
+              Leadership alignment
+            </div>
+            <h3>Shared context</h3>
+            <p>Build a common operating picture across stakeholders — so the decision isn’t just made, it’s understood.</p>
+          </div>
+
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">◈</span>
+              Defensible outcomes
+            </div>
+            <h3>Documented rationale</h3>
+            <p>Capture tradeoffs, risks, and assumptions in a way that stands up to scrutiny and time.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- CAPABILITIES -->
+    <div class="wrap">
+      <section id="capabilities">
+        <div class="section-head">
+          <div>
+            <h2>Capabilities</h2>
+            <div class="hint">High-level by design — keep it premium and acquisition-flexible.</div>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">Δ</span>
+              Scenario analysis
+            </div>
+            <h3>Model outcomes</h3>
+            <p>Compare strategies under different assumptions. Identify sensitivities and decision breakpoints.</p>
+          </div>
+
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">⚑</span>
+              Risk intelligence
+            </div>
+            <h3>Make risk legible</h3>
+            <p>Clarify probability, impact, mitigation options, and residual exposure — in plain language.</p>
+          </div>
+
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">◎</span>
+              Executive synthesis
+            </div>
+            <h3>Board-ready outputs</h3>
+            <p>Concise summaries aligned to objectives — rigorous enough for governance and scrutiny.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- USE CASES + PHILOSOPHY -->
+    <div class="wrap">
+      <section id="usecases">
+        <div class="section-head">
+          <div>
+            <h2>Designed for the Room Where Decisions Are Made</h2>
+            <div class="hint">Framed broadly to keep partnerships, licensing, and acquisition pathways open.</div>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">□</span>
+              Governance
+            </div>
+            <h3>Board reporting</h3>
+            <p>Summarize performance, risk, and decisions with a leadership-first lens and consistent logic.</p>
+          </div>
+
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">∥</span>
+              Capital allocation
+            </div>
+            <h3>Strategy & investment</h3>
+            <p>Weigh options across ROI, timing, risk, and strategic fit — not just a single metric.</p>
+          </div>
+
+          <div class="card">
+            <div class="label">
+              <span class="icon" aria-hidden="true">⟡</span>
+              M&A readiness
+            </div>
+            <h3>Deal intelligence</h3>
+            <p>Support diligence, integration planning, and decision discipline with clear models and assumptions.</p>
+          </div>
+        </div>
+
+        <div style="height:16px"></div>
+
+        <div class="philosophy" role="note" aria-label="Decision philosophy">
+          <p class="quote">
+            Technology creates data. Leadership requires judgment.
+            <br />
+            <strong>BoardAI.ai exists to close that gap.</strong>
+            <small>Decision quality is the competitive advantage that compounds.</small>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="wrap">
+      <section id="contact">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <div class="hint">Partnerships, licensing, and early access inquiries.</div>
+          </div>
+        </div>
+
+        <div class="contact">
+          <!-- Keep Formspree EXACTLY the same -->
+          <form id="boardaiForm" action="https://formspree.io/f/xnjjngql" method="POST">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+            </div>
+
+            <div class="field">
+              <label for="company">Company (optional)</label>
+              <input id="company" name="company" type="text" placeholder="Company / Organization" autocomplete="organization" />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us what you're exploring (partnership, licensing, acquisition interest, or early access)..." required></textarea>
+            </div>
+
+            <input type="hidden" name="source" value="boardai.ai" />
+
+            <div class="form-actions">
+              <button class="btn primary" type="submit"><span class="dot"></span>Send</button>
+              <span class="status" id="formStatus" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <div class="sidebox">
+            <h3>What to include</h3>
+            <ul>
+              <li>Your goal (partnership, licensing, acquisition interest, early access)</li>
+              <li>Decision domain (governance, strategy, risk, capital allocation, M&A)</li>
+              <li>Timeline and stakeholders</li>
+              <li>Any constraints (security, compliance, data sensitivity)</li>
+            </ul>
+
+            <div class="mini">
+              BoardAI.ai is a privately held decision intelligence asset. This page is intentionally minimal to preserve optionality and partnership flexibility.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="wrap">
+      <footer>
+        <div class="footer-row">
+          <div>© <span id="year"></span> BoardAI.ai. All rights reserved.</div>
+          <div class="footlinks">
+            <a href="#top">Back to top</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // Formspree submit UX (no redirect)
+    const form = document.getElementById("boardaiForm");
+    const statusEl = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Sending...";
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          form.reset();
+          statusEl.textContent = "Sent. We’ll follow up soon.";
+        } else {
+          statusEl.textContent = "Something went wrong. Please try again.";
+        }
+      } catch (err) {
+        statusEl.textContent = "Network error. Please try again.";
+      }
+    });
+  </script>
 </body>
 </html>
