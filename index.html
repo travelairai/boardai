@@ -2,366 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BoardAI.ai — Board-Level Intelligence for Executive Decision-Making</title>
-
-  <meta name="description" content="BoardAI.ai is positioned as board-level intelligence for executive decision-making — supporting governance, oversight, risk, and long-term strategy. Privately held. Strategic discussions only." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BoardAI.ai — Board-Level Governance & Decision Intelligence</title>
+  <meta name="description" content="BoardAI.ai is governance intelligence for boards, executives, and owners—preserving intent, accountability, and oversight across complex organizations." />
+  <meta name="theme-color" content="#0b1220" />
 
   <style>
     :root{
-      --bg:#070809;
-      --panel:#0E1012;
-
-      --text:#F6F7F8;
-      --muted:#C9CDD2;
-      --muted2:#AEB4BB;
-
-      --line:rgba(255,255,255,.16);
-
-      /* BoardAI palette: charcoal + muted gold */
-      --char:#1A1D22;
-      --gold:#C9A24D;
-      --goldSoft:rgba(201,162,77,.12);
+      --bg0:#070b14;
+      --bg1:#0b1220;
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,.72);
+      --muted2:rgba(234,240,255,.58);
+      --accent:#d4af37;
+      --accent2:#8b6b2e;
+      --good:#40ffaa;
+      --shadow:0 18px 55px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1120px;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
-
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:
-        radial-gradient(700px 360px at 70% -10%, var(--goldSoft), transparent 60%),
-        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
-      line-height:1.6;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(212,175,55,.18), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(139,107,46,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
-    a{color:inherit;text-decoration:none}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:var(--max);margin:auto;padding:22px 18px}
 
-    .container{
-      max-width:1080px;
-      margin:0 auto;
-      padding:44px 20px 96px;
+    .topbar{
+      position:sticky;top:0;
+      backdrop-filter:blur(14px);
+      background:rgba(7,11,20,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      margin-bottom:36px;
-    }
-
-    .brand{display:flex;flex-direction:column;gap:4px}
+    .brand{display:flex;align-items:center;gap:12px}
     .logo{
-      font-size:20px;
-      font-weight:800;
-      letter-spacing:.4px;
-    }
-    .meta{
-      font-size:12px;
-      color:rgba(201,205,210,.9);
+      width:34px;height:34px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
     }
 
-    nav{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    nav a{
-      font-size:13px;
-      color:#E2E5E9;
-      padding:8px 10px;
-      border:1px solid rgba(255,255,255,.22);
-      border-radius:999px;
-      background:rgba(255,255,255,.03);
-      transition:.15s ease;
-    }
-    nav a:hover{
-      border-color:rgba(255,255,255,.4);
-      transform:translateY(-1px);
-    }
+    h1{font-size:clamp(34px,4vw,52px);margin:16px 0 10px}
+    .sub{color:var(--muted);max-width:65ch;line-height:1.6}
 
-    .hero{
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:20px;
-      padding:30px 22px;
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-    }
-
-    .pills{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:16px;
-    }
-    .pill{
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:600;
-      letter-spacing:.15px;
-    }
-    .pill.gold{
-      border:1px solid rgba(201,162,77,.5);
-      background:rgba(201,162,77,.12);
-      color:#F6E8C7;
-    }
-    .pill.neutral{
-      border:1px solid rgba(255,255,255,.26);
-      background:rgba(255,255,255,.06);
-      color:#E7E9EC;
-    }
-
-    h1{
-      margin:10px 0 12px;
-      font-size:42px;
-      line-height:1.05;
-      letter-spacing:-.7px;
-    }
-
-    .subhead{
-      font-size:17px;
-      color:var(--muted);
-      max-width:900px;
-      margin:0 0 20px;
-    }
-
-    .ctaRow{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-    .btn{
-      padding:13px 16px;
-      border-radius:14px;
-      font-size:14px;
-      font-weight:700;
-      cursor:pointer;
-      transition:.15s ease;
-    }
-    .btn.primary{
-      border:1px solid rgba(201,162,77,.5);
-      background:linear-gradient(135deg,rgba(201,162,77,.35),rgba(201,162,77,.18));
-      color:#FFFFFF;
-    }
-    .btn.primary:hover{
-      box-shadow:0 14px 36px rgba(201,162,77,.28);
-      transform:translateY(-1px);
-    }
-    .btn.secondary{
-      border:1px solid rgba(255,255,255,.28);
-      background:rgba(255,255,255,.05);
-      color:#F3F4F6;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-      margin-top:22px;
-    }
-    @media(min-width:960px){
-      .grid{grid-template-columns:1fr 1fr}
-    }
-
+    section{padding:34px 0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .card{
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:18px;
-      padding:20px;
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      padding:16px;border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
     }
-    .card h2{
-      margin:0 0 8px;
-      font-size:18px;
-    }
-    .card p{margin:0;color:var(--muted2)}
+    .card h3{margin:0 0 8px;font-size:15px}
+    .card p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.55}
 
-    section{margin-top:36px}
-    .sectionTitle{
-      font-size:16px;
-      margin-bottom:12px;
+    .panel{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
+    .panel .pad{padding:18px}
 
-    .box{
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:18px;
-      padding:22px;
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-    }
-    .box p{margin:0;color:var(--muted)}
-    .box p + p{margin-top:10px}
-
-    ul{margin:0;padding-left:18px;color:var(--muted)}
-    li{margin:10px 0}
-
-    form{
-      display:grid;
-      gap:12px;
-      margin-top:18px;
-    }
-    label{
-      font-size:13px;
-      color:rgba(201,205,210,.9);
-    }
-    input,textarea{
-      width:100%;
-      padding:12px;
+    label{font-size:12px;color:var(--muted2)}
+    input,select,textarea{
+      width:100%;padding:12px;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.2);
-      background:#0E1012;
-      color:#FFFFFF;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+      color:var(--text);
     }
     textarea{min-height:120px}
+    .formWrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .span2{grid-column:span 2}
 
-    .fine{
-      font-size:12px;
-      color:rgba(201,205,210,.75);
-      margin-top:10px;
-    }
-
-    footer{
-      margin-top:70px;
-      padding-top:22px;
-      border-top:1px solid rgba(255,255,255,.14);
-      font-size:12px;
-      color:rgba(201,205,210,.75);
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:12px;
+    @media(max-width:900px){
+      .grid3{grid-template-columns:1fr}
+      .formWrap{grid-template-columns:1fr}
+      .span2{grid-column:auto}
     }
   </style>
 </head>
 
 <body>
-<div class="container">
 
-<header>
-  <div class="brand">
-    <div class="logo">BoardAI.ai</div>
-    <div class="meta">Privately owned • Strategic discussions by inquiry only</div>
+<div class="topbar">
+  <div class="wrap brand">
+    <div class="logo"></div>
+    <strong>BoardAI.ai</strong>
   </div>
-  <nav>
-    <a href="#positioning">Positioning</a>
-    <a href="#why">Why boards need this</a>
-    <a href="#usecases">Use cases</a>
-    <a href="#fit">Strategic fit</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+</div>
 
-<section class="hero" id="positioning">
-  <div class="pills">
-    <span class="pill gold">Board-level intelligence</span>
-    <span class="pill neutral">Governance & oversight</span>
-    <span class="pill neutral">Private asset</span>
-  </div>
+<main class="wrap">
 
-  <h1>Board-level intelligence for executive decision-making</h1>
-
-  <p class="subhead">
-    BoardAI.ai is positioned as the governance and intelligence layer that supports directors,
-    executives, and owners with structured insight, oversight, and long-range decision clarity.
+<section>
+  <h1>Board-level intelligence for governance, oversight, and long-horizon decisions.</h1>
+  <p class="sub">
+    BoardAI.ai preserves intent, accountability, and decision context across time—so boards, owners,
+    and executives can govern complex systems without drift.
   </p>
+</section>
 
-  <div class="ctaRow">
-    <a class="btn primary" href="#contact">Request a private discussion</a>
-    <a class="btn secondary" href="#fit">View strategic fit</a>
+<section class="grid3">
+  <div class="card">
+    <h3>Preserve decision intent</h3>
+    <p>Capture why decisions were made, not just outcomes—so strategy survives leadership and market changes.</p>
   </div>
+  <div class="card">
+    <h3>Enable real oversight</h3>
+    <p>Maintain auditable governance structures across entities, portfolios, and operating units.</p>
+  </div>
+  <div class="card">
+    <h3>Align execution to mandate</h3>
+    <p>Ensure management action remains aligned with board-approved objectives and constraints.</p>
+  </div>
+</section>
 
-  <div class="grid">
-    <div class="card">
-      <h2>What this brand represents</h2>
-      <p>
-        BoardAI signals fiduciary responsibility, authority, and trust —
-        intelligence designed for the highest level of decision-making.
+<section>
+  <div class="panel">
+    <div class="pad">
+      <h2>Built for strategic owners</h2>
+      <p class="sub">
+        Designed for boards, PE firms, family offices, and enterprise leadership teams
+        that require durable governance across multi-year horizons.
       </p>
     </div>
-    <div class="card">
-      <h2>Where it sits</h2>
-      <p>
-        Above management, operations, and execution —
-        informing oversight, strategy, and accountability.
-      </p>
+  </div>
+</section>
+
+<section>
+  <div class="panel">
+    <div class="pad">
+      <h2>Inquire</h2>
+      <p class="sub">Serious acquisition, licensing, or strategic discussions only.</p>
+
+      <form action="https://formspree.io/f/xnjjngql" method="POST">
+        <div class="formWrap">
+          <input name="name" placeholder="Full name" required />
+          <input name="email" type="email" placeholder="Work email" required />
+          <input name="company" placeholder="Firm / board / organization" />
+          <input name="role" placeholder="Role (Partner, Director, Chair, etc.)" />
+          <select name="intent">
+            <option>Acquisition</option>
+            <option>Strategic partnership</option>
+            <option>Licensing</option>
+          </select>
+          <select name="timeline">
+            <option>Now</option>
+            <option>30–90 days</option>
+            <option>Exploratory</option>
+          </select>
+          <select class="span2" name="budget">
+            <option>Prefer not to say</option>
+            <option>$150k–$300k</option>
+            <option>$300k–$500k</option>
+            <option>$500k+</option>
+          </select>
+          <textarea class="span2" name="message" placeholder="Describe the governance or oversight challenge you’re solving."></textarea>
+        </div>
+        <br />
+        <button type="submit">Submit inquiry</button>
+      </form>
     </div>
   </div>
 </section>
 
-<section id="why">
-  <div class="sectionTitle">Why boards need AI differently</div>
-  <div class="box">
-    <p>
-      Boards do not need more dashboards or alerts.
-      They need clarity, synthesis, and foresight —
-      intelligence that frames risk, opportunity, and long-term consequences.
-    </p>
-    <p>
-      BoardAI.ai is positioned to represent that layer —
-      AI designed for governance, not operations.
-    </p>
-  </div>
-</section>
-
-<section id="usecases">
-  <div class="sectionTitle">High-value use cases</div>
-  <div class="box">
-    <ul>
-      <li>Capital allocation and long-term planning</li>
-      <li>Risk oversight, scenario modeling, and exposure analysis</li>
-      <li>Strategic reviews and acquisition evaluation</li>
-      <li>Executive performance and accountability frameworks</li>
-      <li>Governance intelligence for regulated environments</li>
-    </ul>
-  </div>
-</section>
-
-<section id="fit">
-  <div class="sectionTitle">Strategic acquisition profile</div>
-  <div class="box">
-    <p>
-      BoardAI.ai is intended for enterprise buyers, holding companies,
-      private equity firms, and platforms operating in regulated or
-      high-stakes environments.
-    </p>
-    <p class="fine">
-      This asset is not publicly listed. Discussions are selective and confidential.
-    </p>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="sectionTitle">Request a private discussion</div>
-  <div class="box">
-    <p>
-      Use the form below to initiate a confidential conversation regarding BoardAI.ai.
-      Serious inquiries only.
-    </p>
-
-    <form action="https://formspree.io/f/xnjjngql" method="POST">
-      <label>Name</label>
-      <input type="text" name="name" required />
-      <label>Email</label>
-      <input type="email" name="email" required />
-      <label>Company</label>
-      <input type="text" name="company" />
-      <label>Message</label>
-      <textarea name="message" placeholder="Who you are, what you’re building, and why BoardAI.ai is relevant."></textarea>
-      <input type="hidden" name="_subject" value="BoardAI.ai — Private Inquiry" />
-      <button class="btn primary" type="submit">Submit inquiry</button>
-      <div class="fine">Messages lacking strategic context may not receive a response.</div>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <div>© BoardAI.ai</div>
-  <div>Privately held • Strategic discussions only</div>
+<footer class="wrap" style="color:var(--muted2);font-size:12px">
+  © <script>document.write(new Date().getFullYear())</script> BoardAI.ai — Privately held digital asset
 </footer>
 
-</div>
+</main>
 </body>
 </html>
